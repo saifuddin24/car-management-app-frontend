@@ -1,37 +1,55 @@
 <template>
 
   <v-card color="white">
-
     <router-view name="top" v-model:page="page"></router-view>
-    <v-card-title class="border-b d-flex justify-space-between">
-      <div>Hello Table</div>
+
+    <v-card-title class="border-b d-lg-flex justify-space-between align-center">
       <div>
-        <v-btn color="primary" density="compact" icon="mdi-reload" variant="text"/>
+        <div>
+          Hello Table
+        </div>
+
+        <div class="pl-0 d-inline-block text-subtitle-2 text-wrap text-light-blue-lighten-2">
+          Hello, This is your car revenue table. All of your  car revenues here. You can add a new revenue by clicking plus icon
+        </div>
       </div>
+
+      <div>
+        <v-btn color="primary" size="small" icon="mdi-reload" variant="tonal"/>
+      </div>
+
     </v-card-title>
 
-    <v-card-title class="border-t mt-4 d-flex justify-space-between">
+    <v-card-subtitle>
+      <v-breadcrumbs :items="['Home','Car','Revenues']" divider="&raquo;" class="pl-0"></v-breadcrumbs>
+    </v-card-subtitle>
+
+    <v-card-title class="d-flex justify-space-between align-center">
+
       <div>
-        <v-btn color="primary" size="small" variant="tonal" icon="mdi-plus"/>
+        <v-btn color="primary" size="small" variant="elevated" icon="mdi-plus"/>
       </div>
 
       <v-sheet>
-        <v-select clearable chips label="Categories" placeholder="select category to filter" multiple
+        <v-select multiple clearable chips
+                  label="Categories"
+                  placeholder="select category to filter"
                   :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-                  variant="outlined"
                   density="compact"
+                  style="min-width: 200px"
+                  hide-details
         >
 
         </v-select>
       </v-sheet>
 
-      <div class="w-25">
+      <div style="max-width: 250px; min-width: 200px">
         <v-text-field
           v-model="search"
           append-inner-icon="mdi-magnify"
-          density="compact"
+          density="comfortable"
           label="Search"
-          single-line
+          placeholder="Type anything to search"
           hide-details
         ></v-text-field>
       </div>
@@ -41,13 +59,13 @@
     <v-data-table
       v-model:page="page"
       :headers="headers"
-      density="compact"
+      density="comfortable"
       :items="desserts"
-      :items-per-page="itemsPerPage"
-      hide-default-footer
-      class="elevation-1  fill-height border-t"
+      :items-per-page="itemsPerPage" hide-default-footer
+      class="elevation-1 fill-height border-t"
       multi-sort
       :search="search"
+      :fiexed-header="true"
     >
     </v-data-table>
 
