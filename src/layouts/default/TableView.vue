@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="d-none d-lg-block">
         <v-btn color="primary" size="small" icon="mdi-reload" variant="tonal"/>
       </div>
 
@@ -24,13 +24,23 @@
       <v-breadcrumbs :items="['Home','Car','Revenues']" divider="&raquo;" class="pl-0"></v-breadcrumbs>
     </v-card-subtitle>
 
-    <v-card-title class="d-flex justify-space-between align-center">
+    <v-card-title class="d-flex flex-column flex-lg-row justify-space-between align-lg-end" style="gap: 1rem">
 
-      <div>
+      <div class="order-3 order-lg-0 d-flex justify-space-between align-center">
         <v-btn color="primary" size="small" variant="elevated" icon="mdi-plus"/>
+        <div style="max-width: 100%; min-width: 180px" class="order-0 d-block d-lg-none">
+          <v-text-field
+            v-model="search"
+            append-inner-icon="mdi-magnify"
+            density="comfortable"
+            label="Search"
+            placeholder="Type anything to search"
+            hide-details
+          ></v-text-field>
+        </div>
       </div>
 
-      <v-sheet>
+      <v-sheet color="order-2  order-lg-1 d-lg-flex align-end" style="gap: 0.5rem">
         <v-select multiple clearable chips
                   label="Categories"
                   placeholder="select category to filter"
@@ -41,9 +51,31 @@
         >
 
         </v-select>
+
+        <v-select multiple clearable chips
+                  label="Categories"
+                  placeholder="select category to filter"
+                  :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                  density="compact"
+                  style="min-width: 200px"
+                  hide-details
+        >
+
+        </v-select>
+        <v-select multiple clearable chips
+                  label="Categories"
+                  placeholder="select category to filter"
+                  :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                  density="compact"
+                  style="min-width: 200px"
+                  hide-details
+        >
+
+        </v-select>
+
       </v-sheet>
 
-      <div style="max-width: 250px; min-width: 200px">
+      <div style="max-width: 100%; min-width: 200px" class="order-0  order-lg-2 d-none d-lg-block">
         <v-text-field
           v-model="search"
           append-inner-icon="mdi-magnify"
